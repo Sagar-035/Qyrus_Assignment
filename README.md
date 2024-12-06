@@ -11,7 +11,8 @@ The website allows users to upload a CSV file and enter a description of the tas
 
 This step is where the user interacts with the app by uploading a file and providing a textual description of the task.
 
-![Taking user inputs]()
+![Taking user inputs](images/input.png)
+
 
 ---
 
@@ -20,7 +21,8 @@ Based on the user's description, the app uses Groq to generate Python code that 
 
 This step leverages AI to generate executable Python code that can process the uploaded CSV data according to the user’s instructions.
 
-*Image for Step 2*
+![code generation](images/code_generated.png)
+
 
 ---
 
@@ -29,7 +31,7 @@ Once the code is generated, it is executed within the application. The results o
 
 This step runs the generated Python code and shows the user the output of their task.
 
-*Image for Step 3*
+![code generation](images/output.png)
 
 ---
 
