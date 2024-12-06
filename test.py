@@ -87,7 +87,7 @@ def generate_python_code(user_message: str, csv_content, file_path: str, max_ret
     """
     
 
-    groq_api_key = os.getenv("GROQ_API_KEY")
+    groq_api_key = "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"
     if not groq_api_key:
         st.error("Groq API key not found. Please set it in Streamlit secrets.")
         return GeneratedPythonCode(code="", execution_output="API key not found")
