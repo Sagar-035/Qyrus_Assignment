@@ -194,9 +194,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Note to user:
-# 1. Install required packages: 
-#    pip install streamlit pandas pydantic groq langchain-core langchain-groq
-# 2. Set up Streamlit secrets:
-#    Create a .streamlit/secrets.toml file with:
-#    GROQ_API_KEY = "your_groq_api_key_here"
+            
