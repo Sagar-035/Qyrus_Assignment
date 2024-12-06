@@ -1,3 +1,4 @@
+
 # Qyrus_Assignment
 
 # Code Generation and Execution App
@@ -54,5 +55,5 @@ This step runs the generated Python code and shows the user the output of their 
 ---
 
 ## Conclusion
-This app automates the process of generating and executing Python code based on user inputs. It enables users to upload CSV files, provide text-based instructions, and get results in real-time.
+This app automates the process of generating and executing Python code based on user inputs. It enables users to upload CSV files, provide text-based instructions, and get results.
 
