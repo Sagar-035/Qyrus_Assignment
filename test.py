@@ -194,7 +194,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-#user need set  their grok api key in .env file
+#user need to set  their grok api key in .env file
 #install all the requirements
 
          
