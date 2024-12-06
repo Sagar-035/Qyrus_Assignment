@@ -14,10 +14,11 @@ This application allows users to upload a CSV file and provide a task descriptio
 2. Visit the Groq website and sign up for a free API key. Note that the key is valid for 24 hours after creation.
 
 3. Once you have the API key, save it in a .env file at the root of your project.
-  Create a .env file and add the following line:
+  
   GROQ_API_KEY=your_api_key_here
 
 4. Run the Application
+
    streamlit run test.py
 
 
