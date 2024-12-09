@@ -34,7 +34,7 @@ This application allows users to upload a CSV file and provide a task descriptio
 
 3. Run the Docker container:
 
-  docker run -d -p <host-port>:<container-port> <image-name>
+    docker run -d -p <host-port>:<container-port> <image-name>
 
 
    
