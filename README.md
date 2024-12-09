@@ -7,23 +7,38 @@ This application allows users to upload a CSV file and provide a task descriptio
 
 ---
 
-# Steps to run the Code:
+# Requirements
 
-1. Install all dependencies listed in requirements.txt:
----- pip install -r requirements.txt
+1. Visit the Groq website and sign up for a free API key. Note that the key is valid for 24 hours after creation.
 
-2. Visit the Groq website and sign up for a free API key. Note that the key is valid for 24 hours after creation.
-
-3. Once you have the API key, save it in a .env file at the root of your project.
+2. Once you have the API key, save it in a .env file at the root of your project.
   
   GROQ_API_KEY=your_api_key_here
 
-4. Run the Application
-
-   streamlit run test.py
+3. Docker installed on your system
 
 
 
+
+
+# Steps to Run the Project
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd <project-folder>
+
+2. Build the Docker image:
+
+   docker build -t <image-name> .
+
+3. Run the Docker container:
+
+  docker run -d -p <host-port>:<container-port> <image-name>
+
+
+   
+## Overview
 
 ## 1. User Input: CSV File and Text
 The website allows users to upload a CSV file and enter a description of the task they want to perform on the CSV data. 
