@@ -30,11 +30,16 @@ This application allows users to upload a CSV file and provide a task descriptio
 
 2. Build the Docker image:
 
-   docker build -t <image-name> .
+   docker build -t streamlit-app .
 
 3. Run the Docker container:
 
-    docker run -d -p <host-port>:<container-port> <image-name>
+   docker run -p 8501:8501 streamlit-app
+
+4. open the web browser:
+
+   http://localhost:8501
+
 
 
    
