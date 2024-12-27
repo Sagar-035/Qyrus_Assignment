@@ -13,13 +13,7 @@ from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 load_dotenv()
 
-# Pydantic model for structured output
-class GeneratedPythonCode(BaseModel):
-    code: str
-    execution_output: str
 
-class PythonCode(BaseModel):
-    code: str = Field(..., description="Python code that fulfills the user's request.")
 
 # Function to read CSV file and output structured data
 def read_csv(file_path, head_rows=5):
@@ -73,74 +67,8 @@ def save_uploaded_file(uploaded_file):
         st.error(f"Error saving file: {e}")
         return None
 
-# Function to generate Python code using Groq
-def generate_python_code(user_message: str, csv_content, file_path: str, max_retries=3) -> GeneratedPythonCode:
-    # Prepare a prompt to send to Groq, including CSV content and user message
-    prompt = """
-    You are a python codebase that outputs code in JSON.
-    The user has uploaded the following CSV data:
-    File Name: {file_name}
-    Few rows in CSV for Reference: {csv_content}
-    The user message is: '{user_message}'
-    Based on the CSV data and the user's request, generate block of Python code that fulfills the task.
-    The code should be executable and only code do not include any thing like explination, title, etc.
-
-    {format_instructions}
-    """
-    
-
-    groq_api_key = os.getenv("GROQ_API_KEY")
-    if not groq_api_key:
-        st.error("Groq API key not found. Please set it in Streamlit secrets.")
-        return GeneratedPythonCode(code="", execution_output="API key not found")
-
-    for i in range(max_retries):
-        try:
-            st.info(f'Attempt {i+1} at generating code...')
-            
-            # Initialize Groq LLM
-            groq_llm = ChatGroq(
-                api_key=groq_api_key, 
-                model="llama-3.1-70b-versatile", 
-                temperature=0.3
-            )
-            
-            # Set up parsing
-            code_parser = JsonOutputParser(pydantic_object=PythonCode)
-            code_prompt = PromptTemplate(
-                template=prompt,
-                input_variables=["file_name", "csv_content", "user_message"],
-                partial_variables={"format_instructions": code_parser.get_format_instructions()},
-            )
-            
-            # Create processing chain
-            chain = code_prompt | groq_llm | code_parser
-            
-            # Invoke the chain
-            result = chain.invoke({
-                "file_name": file_path,
-                "user_message": user_message, 
-                "csv_content": json.dumps(csv_content, indent=2)
-            })
-            
-            # Execute the generated code
-            execution_output = execute_python_code(result.get('code'))
-            
-            # Return structured output
-            return GeneratedPythonCode(
-                code=result.get('code'), 
-                execution_output=execution_output
-            )
-        
-        except Exception as e:
-            st.warning(f"Error in attempt {i+1}: {str(e)}")
-    
-    # If all attempts fail
-    return GeneratedPythonCode(
-        code="", 
-        execution_output="Failed to generate code after multiple attempts"
-    )
-
+..................................................
+         
 # Main Streamlit application
 def main():
     st.title("Code Generation and Execution App")
